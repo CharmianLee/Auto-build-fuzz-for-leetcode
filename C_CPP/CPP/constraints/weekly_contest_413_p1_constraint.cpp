@@ -40,7 +40,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     bool result = solution.checkTwoChessboards(coordinate1, coordinate2);
     
     // Save test case
-    std::string outputDir = "/home/charmian/Code/leetcode_fuzz_test/fuzz_outputs/CPP/weekly_contest_413_p1/output/";
+    std::string outputDir = "fuzz_outputs/CPP/weekly_contest_413_p1/output/";
     // 创建输出目录（如果不存在）
     std::filesystem::create_directories(outputDir);
     std::ofstream outFile;

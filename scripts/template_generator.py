@@ -95,7 +95,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {{
     // TODO: Execute the test function
     
     // Save test case
-    std::string outputDir = "/home/charmian/Code/leetcode_fuzz_test/fuzz_outputs/{language}/{self.problem_id}/output/";
+    std::string outputDir = "fuzz_outputs/{language}/{self.problem_id}/output/";
     // 创建输出目录（如果不存在）
     std::filesystem::create_directories(outputDir);
     std::ofstream outFile;
