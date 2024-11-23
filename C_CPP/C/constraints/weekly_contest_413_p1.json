@@ -1,0 +1,19 @@
+{
+    "fuzzing_params": {
+        "max_len": 4,
+        "max_time": 30,
+        "runs": 100000
+    },
+    "problem_info": {
+        "contest": "Weekly Contest 413",
+        "problem_number": 1,
+        "title": "3274. 检查棋盘方格颜色是否相同",
+        "difficulty": "简单",
+        "source_url": "https://leetcode.cn/problems/check-if-two-chessboard-squares-have-the-same-color/description/",
+        "tags": [
+            "脑筋急转弯",
+            "数学",
+            "字符串"
+        ]
+    }
+}
