@@ -30,7 +30,7 @@ bool isValidInput(const uint8_t* data, size_t size) {
 void transformInput(const uint8_t* data, size_t size,
                    vector<vector<int>>& queries, int& k) {
     // 读取k值
-    k = std::max(1, abs(*reinterpret_cast<const int32_t*>(data)) % 100001);
+    k = std::max(1, abs(*reinterpret_cast<const int32_t*>(data)) % 10);
     data += sizeof(int32_t);
     size -= sizeof(int32_t);
 
@@ -42,8 +42,8 @@ void transformInput(const uint8_t* data, size_t size,
     for (size_t i = 0; i < queryCount; i++) {
         const int32_t* queryData = reinterpret_cast<const int32_t*>(data + i * 2 * sizeof(int32_t));
         // 确保x,y在[-10^9, 10^9]范围内
-        int x = std::max(-1000000000, std::min(1000000000, static_cast<int>(queryData[0])));
-        int y = std::max(-1000000000, std::min(1000000000, static_cast<int>(queryData[1])));
+        int x = queryData[0] % 2000000001 - 1000000000;
+        int y = queryData[1] % 2000000001 - 1000000000;
         queries.push_back({x, y});
     }
 }

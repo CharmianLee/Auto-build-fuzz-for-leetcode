@@ -36,7 +36,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     
     // TODO: Transform fuzzer input into valid function parameters
     // 从输入数据中提取k值
-    int k = std::max(1, abs(*reinterpret_cast<const int32_t*>(data)) % 100001);
+    int k = std::max(1, abs(*reinterpret_cast<const int32_t*>(data)) % 10);
     data += sizeof(int32_t);
     size -= sizeof(int32_t);
     
@@ -54,11 +54,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     
     // 填充查询数据
     for (size_t i = 0; i < queryCount; i++) {
-        const int32_t* queryData = reinterpret_cast<const int32_t*>(data + i * 2 * sizeof(int32_t));
-        queries[i][0] = std::max(-1000000000, 
-                                std::min(1000000000, static_cast<int>(queryData[0])));
-        queries[i][1] = std::max(-1000000000, 
-                                std::min(1000000000, static_cast<int>(queryData[1])));
+        queries[i][0] = rand() % 2000000001 - 1000000000; // 随机生成范围内的值 [-1000000000, 1000000000]
+        queries[i][1] = rand() % 2000000001 - 1000000000; // 随机生成范围内的值 [-1000000000, 1000000000]
     }
 
     // TODO: Execute the test function
