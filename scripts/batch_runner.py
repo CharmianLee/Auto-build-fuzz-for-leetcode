@@ -42,6 +42,9 @@ class FuzzingRunner:
     def run_single_fuzzer(self, contest_num: int, problem_num: int, 
                          language: Optional[str] = None) -> bool:
         """运行单个问题的fuzzer"""
+        if not self.build_project():
+            return False
+
         problem_id = f"weekly_contest_{contest_num}_p{problem_num}"
         
         languages = ["C", "CPP"] if language is None else [language]
@@ -85,7 +88,7 @@ class FuzzingRunner:
         return success
 
     def run_batch(self, problems: Optional[List[Tuple[int, int]]] = None, 
-                 max_workers: int = 4) -> bool:
+                 max_workers: int = 1) -> bool:
         """批量运行fuzzing测试"""
         if not self.build_project():
             return False

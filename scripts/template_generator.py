@@ -133,7 +133,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {{
 
     def generate_cmakelists(self) -> str:
         """生成CMakeLists.txt模板"""
-        return f"""cmake_minimum_required(VERSION 3.10)
+        cmakelists_path = os.path.join(self.base_dir, "CMakeLists.txt")
+        cmakelists_header = """cmake_minimum_required(VERSION 3.10)
 project(LeetcodeFuzzer)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -142,9 +143,11 @@ set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
 
 # Fuzzing flags
-set(CMAKE_C_FLAGS "${{CMAKE_C_FLAGS}} -fsanitize=fuzzer,address")
-set(CMAKE_CXX_FLAGS "${{CMAKE_CXX_FLAGS}} -fsanitize=fuzzer,address")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=fuzzer,address")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=fuzzer,address")
+"""
 
+        cmakelists_body = f"""
 # Problem: Weekly Contest {self.contest_num} Problem {self.problem_num}
 # C version
 add_executable(fuzzer_c_wc{self.contest_num}_p{self.problem_num}
@@ -158,6 +161,19 @@ add_executable(fuzzer_cpp_wc{self.contest_num}_p{self.problem_num}
     C_CPP/CPP/constraints/{self.problem_id}_constraint.cpp
 )
 """
+
+        if os.path.exists(cmakelists_path):
+            with open(cmakelists_path, 'r') as f:
+                content = f.read()
+            if cmakelists_header not in content:
+                with open(cmakelists_path, 'a') as f:
+                    f.write(cmakelists_header)
+        else:
+            with open(cmakelists_path, 'w') as f:
+                f.write(cmakelists_header)
+
+        with open(cmakelists_path, 'a') as f:
+            f.write(cmakelists_body)
 
     def generate_template(self):
         """生成所有模板文件"""

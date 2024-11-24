@@ -53,7 +53,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
         std::cerr << "无法打开输出文件！" << std::endl;
         return 0;
     }
-    outFile << "Input: " << coordinate1 << " " << coordinate2 << std::endl;
+    outFile << "Input: coordinate1 = " << coordinate1 << ", coordinate2 = " << coordinate2 << std::endl;
     outFile << "Output: " << (result ? "true" : "false") << std::endl;
     outFile << "--------------------------" << std::endl;
     outFile.close();
