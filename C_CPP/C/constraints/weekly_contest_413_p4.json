@@ -1,0 +1,18 @@
+{
+    "fuzzing_params": {
+        "max_len": 10000,
+        "max_time": 30,
+        "runs": 50000
+    },
+    "problem_info": {
+        "contest": "Weekly Contest 413",
+        "problem_number": 4,
+        "title": "3277. 查询子数组最大异或值",
+        "difficulty": "困难",
+        "source_url": "https://leetcode.cn/problems/maximum-xor-score-subarray-queries/description/",
+        "tags": [
+            "数组",
+            "动态规划"
+        ]
+    }
+}

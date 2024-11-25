@@ -129,6 +129,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {{
 
     def generate_cmakelists(self) -> str:
         """生成CMakeLists.txt模板"""
+        cmakelists_path = os.path.join(self.base_dir, "CMakeLists.txt")
         cmakelists_header = """cmake_minimum_required(VERSION 3.10)
 project(LeetcodeFuzzer)
 
@@ -156,15 +157,22 @@ add_executable(fuzzer_cpp_wc{self.contest_num}_p{self.problem_num}
     C_CPP/CPP/constraints/{self.problem_id}_constraint.cpp
 )
 """
-        full_content = cmakelists_header + cmakelists_body
-        cmakelists_path = os.path.join(self.base_dir, "CMakeLists.txt")
-
+        
+        # 读取CMakeLists.txt文件，如果已包含header配置则只追加body
         if os.path.exists(cmakelists_path):
             with open(cmakelists_path, 'r') as f:
                 content = f.read()
             if cmakelists_header not in content:
-                full_content = cmakelists_header + content + cmakelists_body
-        return full_content
+                with open(cmakelists_path, 'a') as f:
+                    f.write(cmakelists_header)
+        else:
+            with open(cmakelists_path, 'w') as f:
+                f.write(cmakelists_header)
+
+        with open(cmakelists_path, 'a') as f:
+            f.write(cmakelists_body)
+                
+
 
     def generate_template(self):
         """生成所有模板文件"""
@@ -187,10 +195,8 @@ add_executable(fuzzer_cpp_wc{self.contest_num}_p{self.problem_num}
                 json.dump(self.generate_json_config(), f, indent=4)
         
         # 生成CMakeLists.txt
-        cmakelists_content = self.generate_cmakelists()
-        with open(os.path.join(self.base_dir, "CMakeLists.txt"), 'w') as f:
-            f.write(cmakelists_content)
-
+        self.generate_cmakelists()
+        
         # 生成输出文件
         with open(os.path.join(self.base_dir, f"fuzz_outputs/C/{self.problem_id}/output/test_cases.txt"), 'w') as f:
             f.write("Correct test cases:\n")

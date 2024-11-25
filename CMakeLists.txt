@@ -48,3 +48,16 @@ add_executable(fuzzer_cpp_wc413_p3
     C_CPP/CPP/src/weekly_contest_413_p3.cpp
     C_CPP/CPP/constraints/weekly_contest_413_p3_constraint.cpp
 )
+
+# Problem: Weekly Contest 413 Problem 4
+# C version
+add_executable(fuzzer_c_wc413_p4
+    C_CPP/C/src/weekly_contest_413_p4.c
+    C_CPP/C/constraints/weekly_contest_413_p4_constraint.cpp
+)
+
+# C++ version
+add_executable(fuzzer_cpp_wc413_p4
+    C_CPP/CPP/src/weekly_contest_413_p4.cpp
+    C_CPP/CPP/constraints/weekly_contest_413_p4_constraint.cpp
+)
