@@ -65,11 +65,7 @@ public:
     // Example: bool solutionFunction(type1 param1, type2 param2);
 }"""
         else:
-            extern_c = """// TODO: Add your Solution class header
-class Solution {
-public:
-    // Function declaration
-};"""
+            extern_c = f"""#include "../src/{self.problem_id}.cpp" """
 
         return f"""#include <stdint.h>
 #include <stddef.h>
@@ -133,7 +129,6 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {{
 
     def generate_cmakelists(self) -> str:
         """生成CMakeLists.txt模板"""
-        cmakelists_path = os.path.join(self.base_dir, "CMakeLists.txt")
         cmakelists_header = """cmake_minimum_required(VERSION 3.10)
 project(LeetcodeFuzzer)
 
@@ -161,19 +156,15 @@ add_executable(fuzzer_cpp_wc{self.contest_num}_p{self.problem_num}
     C_CPP/CPP/constraints/{self.problem_id}_constraint.cpp
 )
 """
+        full_content = cmakelists_header + cmakelists_body
+        cmakelists_path = os.path.join(self.base_dir, "CMakeLists.txt")
 
         if os.path.exists(cmakelists_path):
             with open(cmakelists_path, 'r') as f:
                 content = f.read()
             if cmakelists_header not in content:
-                with open(cmakelists_path, 'a') as f:
-                    f.write(cmakelists_header)
-        else:
-            with open(cmakelists_path, 'w') as f:
-                f.write(cmakelists_header)
-
-        with open(cmakelists_path, 'a') as f:
-            f.write(cmakelists_body)
+                full_content = cmakelists_header + content + cmakelists_body
+        return full_content
 
     def generate_template(self):
         """生成所有模板文件"""
@@ -196,8 +187,9 @@ add_executable(fuzzer_cpp_wc{self.contest_num}_p{self.problem_num}
                 json.dump(self.generate_json_config(), f, indent=4)
         
         # 生成CMakeLists.txt
-        with open(os.path.join(self.base_dir, "CMakeLists.txt"), 'a') as f:
-            f.write(self.generate_cmakelists())
+        cmakelists_content = self.generate_cmakelists()
+        with open(os.path.join(self.base_dir, "CMakeLists.txt"), 'w') as f:
+            f.write(cmakelists_content)
 
         # 生成输出文件
         with open(os.path.join(self.base_dir, f"fuzz_outputs/C/{self.problem_id}/output/test_cases.txt"), 'w') as f:

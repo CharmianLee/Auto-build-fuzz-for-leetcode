@@ -1,0 +1,21 @@
+{
+    "fuzzing_params": {
+        "max_len": 1000,
+        "max_time": 30,
+        "runs": 50000
+    },
+    "problem_info": {
+        "contest": "Weekly Contest 413",
+        "problem_number": 3,
+        "title": "3276. 选择矩阵中单元格的最大得分",
+        "difficulty": "困难",
+        "source_url": "https://leetcode.cn/problems/select-cells-in-grid-with-maximum-score/description/",
+        "tags": [
+            "位运算",
+            "动态规划",
+            "数组",
+            "矩阵",
+            "状态压缩"
+        ]
+    }
+}
