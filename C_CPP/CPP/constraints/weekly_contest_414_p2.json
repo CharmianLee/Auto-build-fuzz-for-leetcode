@@ -1,0 +1,20 @@
+{
+    "fuzzing_params": {
+        "max_len": 100000,
+        "max_time": 30,
+        "runs": 100000
+    },
+    "problem_info": {
+        "contest": "Weekly Contest 414",
+        "problem_number": 2,
+        "title": "3281. 范围内整数的最大得分",
+        "difficulty": "中等",
+        "source_url": "https://leetcode.cn/problems/maximize-score-of-numbers-in-ranges/description/",
+        "tags": [
+            "贪心",
+            "数组",
+            "二分查找",
+            "排序"
+        ]
+    }
+}

@@ -68,6 +68,7 @@
         "__split_buffer": "cpp",
         "queue": "cpp",
         "stack": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "ranges": "cpp"
     }
 }

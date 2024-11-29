@@ -1,0 +1,18 @@
+{
+    "fuzzing_params": {
+        "max_len": 50,
+        "max_time": 30,
+        "runs": 100000
+    },
+    "problem_info": {
+        "contest": "Weekly Contest 414",
+        "problem_number": 1,
+        "title": "3280. 将日期转换为二进制表示",
+        "difficulty": "简单",
+        "source_url": "https://leetcode.cn/problems/convert-date-to-binary/description/",
+        "tags": [
+            "数学",
+            "字符串"
+        ]
+    }
+}
