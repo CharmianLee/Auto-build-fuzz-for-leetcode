@@ -10,5 +10,5 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
-/**/corpus
-/**/corpus/*
+fuzz_outputs/C/weekly_contest_*/corpus/
+fuzz_outputs/CPP/weekly_contest_*/corpus/
