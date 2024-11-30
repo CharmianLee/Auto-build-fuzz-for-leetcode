@@ -1,0 +1,18 @@
+{
+    "fuzzing_params": {
+        "max_len": 400004,
+        "max_time": 30,
+        "runs": 100000
+    },
+    "problem_info": {
+        "contest": "Weekly Contest 414",
+        "problem_number": 3,
+        "title": "3282. 到达数组末尾的最大得分",
+        "difficulty": "中等",
+        "source_url": "https://leetcode.cn/problems/reach-end-of-array-with-max-score/description/",
+        "tags": [
+            "贪心",
+            "数组"
+        ]
+    }
+}

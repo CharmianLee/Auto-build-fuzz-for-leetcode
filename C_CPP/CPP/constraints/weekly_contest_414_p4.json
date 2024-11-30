@@ -1,0 +1,22 @@
+{
+    "fuzzing_params": {
+        "max_len": 33,
+        "max_time": 30,
+        "runs": 50000
+    },
+    "problem_info": {
+        "contest": "Weekly Contest 414",
+        "problem_number": 4,
+        "title": "3283. 吃掉所有兵需要的最多移动次数",
+        "difficulty": "困难",
+        "source_url": "https://leetcode.cn/problems/maximum-number-of-moves-to-kill-all-pawns/description/",
+        "tags": [
+            "位运算",
+            "广度优先搜索",
+            "数组",
+            "数学",
+            "状态压缩",
+            "博弈"
+        ]
+    }
+}
