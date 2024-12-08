@@ -113,3 +113,29 @@ add_executable(fuzzer_cpp_wc414_p4
     C_CPP/CPP/src/weekly_contest_414_p4.cpp
     C_CPP/CPP/constraints/weekly_contest_414_p4_constraint.cpp
 )
+
+# Problem: Weekly Contest 415 Problem 1
+# C version
+add_executable(fuzzer_c_wc415_p1
+    C_CPP/C/src/weekly_contest_415_p1.c
+    C_CPP/C/constraints/weekly_contest_415_p1_constraint.cpp
+)
+
+# C++ version
+add_executable(fuzzer_cpp_wc415_p1
+    C_CPP/CPP/src/weekly_contest_415_p1.cpp
+    C_CPP/CPP/constraints/weekly_contest_415_p1_constraint.cpp
+)
+
+# Problem: Weekly Contest 415 Problem 2
+# C version
+add_executable(fuzzer_c_wc415_p2
+    C_CPP/C/src/weekly_contest_415_p2.c
+    C_CPP/C/constraints/weekly_contest_415_p2_constraint.cpp
+)
+
+# C++ version
+add_executable(fuzzer_cpp_wc415_p2
+    C_CPP/CPP/src/weekly_contest_415_p2.cpp
+    C_CPP/CPP/constraints/weekly_contest_415_p2_constraint.cpp
+)
