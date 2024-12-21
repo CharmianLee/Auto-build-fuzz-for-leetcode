@@ -1,0 +1,25 @@
+{
+    "fuzzing_params": {
+        "max_len": 0,
+        "max_time": 30,
+        "runs": 500000
+    },
+    "problem_info": {
+        "contest": "Weekly Contest 415",
+        "problem_number": 3,
+        "title": "3291. 形成目标字符串需要的最少字符串数 I",
+        "difficulty": "中等",
+        "source_url": "https://leetcode.cn/problems/minimum-number-of-valid-strings-to-form-target-i/description/",
+        "tags": [
+            "字典树",
+            "线段树",
+            "数组",
+            "字符串",
+            "二分查找",
+            "动态规划",
+            "字符串匹配",
+            "哈希函数",
+            "滚动哈希"
+        ]
+    }
+}
